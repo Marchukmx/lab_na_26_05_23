@@ -29,24 +29,19 @@ except StopIteration as e:
 #2
 
 class SquareGenerator:
-    def __init__(self,N):
-        if not isinstance(N, list):
-            raise TypeError("Неправильний тип N")
-        self.N = N
-        self.i = 1
+    def __init__(self,b):
+        if not isinstance(b, (int,float)):
+            raise TypeError("Це повинно бути числом")
+        self.b = b
+    def generator_square(self):
+        for i in range(1,int(self.b) + 1):
+            yield i**2
 
-    def __next__(self):
-        if self.i > self.N:
-            raise StopIteration
-        kvadrat = self.i ** 2
-        self.i += 1
-        return kvadrat
-
-N = [2,3,4,5,6,7,8,9,10]
-aa = SquareGenerator(N)
-for kvadrat in aa:
-    print(kvadrat)
-
+try:
+    for num in SquareGenerator(b = int(input("Введіть знач b:"))).generator_square():
+         print(num)
+except TypeError as e:
+    print(e)
 #3
 
 class ListIterator:
